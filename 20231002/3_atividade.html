@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Atividade 3</title>
+
+</head>
+<body>
+    <h1>Contador de Caracteres</h1>
+
+    <form id="form">
+        <label for="inputString">Insira uma palavra qualquer:</label>
+        <input type="text" id="inputString" name="inputString">
+        <input type="submit" value="Contar">
+    </form>
+
+    <table>
+        <tr>
+            <th>Tipo de Caractere</th>
+            <th>Quantidade</th>
+        </tr>
+        <tr>
+            <td>Vogais</td>
+            <td id="vowelCount">0</td>
+        </tr>
+        <tr>
+            <td>Consoantes</td>
+            <td id="consonantCount">0</td>
+        </tr>
+        <tr>
+            <td>Dígitos</td>
+            <td id="digitCount">0</td>
+        </tr>
+        <tr>
+            <td>Outros</td>
+            <td id="otherCount">0</td>
+        </tr>
+    </table>
+
+    <script>
+        document.getElementById('form').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const inputString = document.getElementById('inputString').value;
+
+            contarCaracteres(inputString);
+        });
+
+        function contarCaracteres(inputString) {
+            const vowelCount = inputString.match(/[aeiouAEIOU]/g);
+            const consonantCount = inputString.match(/[bcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ]/g);
+            const digitCount = inputString.match(/\d/g);
+            const otherCount = inputString.match(/[^aeiouAEIOUbcdfghjklmnpqrstvwxyzBCDFGHJKLMNPQRSTVWXYZ\d]/g);
+
+            document.getElementById('vowelCount').textContent = vowelCount ? vowelCount.length : 0;
+            document.getElementById('consonantCount').textContent = consonantCount ? consonantCount.length : 0;
+            document.getElementById('digitCount').textContent = digitCount ? digitCount.length : 0;
+            document.getElementById('otherCount').textContent = otherCount ? otherCount.length : 0;
+        }
+    </script>
+</body>
+</html>

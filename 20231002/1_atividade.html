@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Atividade 1</title>
+    <style>
+        
+    </style>
+    <script lang="javascript">
+        function String_Tabela() {
+            var texto = document.querySelector('input[name="Palavra"]').value;
+            var tamanhoT = texto.length;
+
+            var tableHTML = "<table border='3px'><tr>";
+
+            for (var i = 0; i < tamanhoT; i++) {
+                tableHTML += "<td>" + texto.charAt(i) + "</td>";
+            }
+
+            tableHTML += "</tr></table>";
+
+            document.getElementById('tabelaLinha').innerHTML = tableHTML;
+
+            var tableHTML = "<table border='3px'>";
+
+            for (var i = 0; i < tamanhoT; i++)
+            {
+                tableHTML += "<tr> <td>" + texto.charAt(i) + "</td> </tr>";
+            }
+
+            tableHTML += "</table>";
+
+            document.getElementById('tabelaColuna').innerHTML = tableHTML;
+        
+        }
+    </script>
+</head>
+<body>
+    <form>        
+        <fieldset>
+            <legend>Informe uma palavra qualquer</legend>
+            <p>
+                <label for="Palavra">
+                    Aqui você pode escrever qualquer palavra: <input type="text" name="Palavra" value="Qualquer" placeholder="Informe aqui...">
+                </label>
+            </p>
+            <p>
+                <input type="button" value="Criar tabelas" onclick="String_Tabela()">
+            </p>
+        </fieldset>
+    </form>
+
+    
+    <div id="tabelaLinha"></div>
+    <div id="tabelaColuna"></div>
+
+</body>
+</html>

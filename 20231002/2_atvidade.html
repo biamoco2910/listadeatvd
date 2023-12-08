@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Gerador de String</title>
+</head>
+<body>
+    <h1>Gerador de String</h1>
+
+    <form id="stringForm">
+        <label for="character">Carácter:</label>
+        <input type="text" id="character" name="character" required>
+
+        <label for="number">Número inteiro:</label>
+        <input type="number" id="number" name="number" required>
+
+        <button type="submit">Gerar</button>
+    </form>
+
+    <div id="stringOutput"></div>
+
+    <script>
+        document.getElementById("stringForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            var character = document.getElementById("character").value;
+            var number = parseInt(document.getElementById("number").value);
+
+            var stringOutput = "";
+
+            for (var i = 0; i < number; i++) {
+                stringOutput += character;
+            }
+
+            document.getElementById("stringOutput").textContent = stringOutput;
+        });
+    </script>
+</body>
+</html>

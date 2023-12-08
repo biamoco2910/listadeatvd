@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <me
+ta charset="UTF-8">
+    <title>Formatador de Nomes</title>
+    <style>
+        
+        #formattedName {
+            font-weight: normal;
+        }
+
+        
+        #formattedLastName {
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+    <h1>Formatador de Nomes</h1>
+    <form>
+        <label for="nome">Digite um nome:</label>
+        <input type="text" id="nome" name="nome" required>
+        <button type="button" onclick="formatarNome()">Formatar</button>
+    </form>
+    <p>Nome formatado: <span id="formattedName"></span></p>
+
+    <script>
+        function formatarNome() {
+            
+            var nome = document.getElementById("nome").value;
+
+            var partesNome = nome.split(" ");
+            
+            if (partesNome.length >= 2) {
+
+                var primeiroNome = partesNome[0];
+                var ultimoNome = partesNome[partesNome.length - 1];
+
+                var nomesMeioAbreviados = "";
+                for (var i = 1; i < partesNome.length - 1; i++) {
+                    nomesMeioAbreviados += partesNome[i].charAt(0).toUpperCase() + ". ";
+                }
+
+                var nomeFormatado = "<span id='formattedLastName'>" + ultimoNome + "</span>, " + primeiroNome + " " + nomesMeioAbreviados;
+
+                document.getElementById("formattedName").innerHTML = nomeFormatado;
+            } else {
+                document.getElementById("formattedName").innerHTML = "Por favor, insira um nome válido.";
+            }
+        }
+    </script>
+</body>
+</html>

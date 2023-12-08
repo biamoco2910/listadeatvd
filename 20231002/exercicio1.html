@@ -1,0 +1,60 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Formatar Nome</title>
+</head>
+<body>
+    <h1>Formatar Nome</h1>
+
+    <form id="form">
+        <label for="inputName">Insira um nome:</label>
+        <input type="text" id="inputName" name="inputName">
+        <input type="submit" value="Formatar">
+    </form>
+
+    <p>Nome formatado: <span id="formattedName"></span></p>
+
+    <script>
+        document.getElementById('form').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Obtém o valor do nome inserido pelo usuário
+            const inputName = document.getElementById('inputName').value;
+
+            // Chama a função para formatar o nome
+            const formattedName = formatarNome(inputName);
+
+            // Exibe o nome formatado na página
+            document.getElementById('formattedName').textContent = formattedName;
+        });
+
+        function formatarNome(inputName) {
+            // Divide o nome em palavras
+            const words = inputName.split(' ');
+
+            // Obtém o sobrenome (última palavra)
+            const lastName = words[words.length - 1].toUpperCase();
+
+            // Inicializa uma string para as iniciais dos outros nomes
+            let initials = '';
+
+            // Itera pelas outras palavras (nomes) para obter as iniciais
+            for (let i = 0; i < words.length - 1; i++) {
+                const name = words[i];
+                if (name.length > 0) {
+                    initials += name[0].toUpperCase() + '. ';
+                }
+            }
+
+            // Remove o espaço em branco extra no final das iniciais
+            initials = initials.trim();
+
+            // Formata o nome completo no estilo de referência bibliográfica
+            const formatted = `${lastName}, ${initials}`;
+
+            return formatted;
+        }
+    </script>
+</body>
+</html>
